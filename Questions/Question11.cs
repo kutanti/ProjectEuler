@@ -3,8 +3,11 @@ namespace ProjectEuler.Questions
     using System;
     using System.Text;
     using System.Collections.Generic;
-    public class Solution11
+    public class Question11
     {
+        /*
+        What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
+        */
         private static int[,] grid = new int[,] {
     { 08, 02, 22, 97, 38, 15, 00, 40, 00, 75, 04, 05, 07, 78, 52, 12, 50, 77, 91, 08 },
     {49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 04, 56, 62, 00},
@@ -26,8 +29,11 @@ namespace ProjectEuler.Questions
     {20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 04, 36, 16},
     {20, 73, 35, 29, 78, 31, 90, 01, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 05, 54 },
     { 01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48 } };
-        public static long GetMaxProduct()
+        public static long Solution()
         {
+            // I am solving this problem using BFS.
+            // Time : O(Row*Col) +O(4*n) ~ O(n)
+            // Space : 2 * O(Row*Col) (one for visited and other for queue) +O(4*n) ~ O(n)
             bool[,] visited = new bool[20, 20];
 
             //up vectors
@@ -60,7 +66,6 @@ namespace ProjectEuler.Questions
             Queue<string> queue = new Queue<string>();
 
             queue.Enqueue(0 + "," + 0);
-            int score = 0;
             Console.WriteLine("Breadth-First Traversal: ");
             while (queue.Count > 0)
             {

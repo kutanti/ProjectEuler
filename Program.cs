@@ -7,7 +7,7 @@ namespace ProjectEuler
     {
         static void Main(string[] args)
         {
-            var ans = Questions.Solution11.GetMaxProduct();
+            var ans = Questions.Question11.Solution();
             Console.WriteLine(ans);
         }
     }
